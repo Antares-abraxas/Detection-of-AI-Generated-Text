@@ -1,0 +1,7 @@
+venv/
+.env
+.ipynb_checkpoints/
+backup/
+data/news.csv
+*.npy
+data/

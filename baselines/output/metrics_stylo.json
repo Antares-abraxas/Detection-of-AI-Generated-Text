@@ -1,0 +1,8 @@
+{
+    "name": "Stylometry + Random Forest",
+    "Accuracy": 0.864,
+    "Precision": 0.886411889596603,
+    "Recall": 0.835,
+    "F1": 0.8599382080329557,
+    "AUC-ROC": 0.931976
+}

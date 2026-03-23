@@ -1,0 +1,8 @@
+{
+    "name": "TF-IDF + Random Forest",
+    "Accuracy": 0.966,
+    "Precision": 0.969758064516129,
+    "Recall": 0.962,
+    "F1": 0.9658634538152611,
+    "AUC-ROC": 0.9948485
+}

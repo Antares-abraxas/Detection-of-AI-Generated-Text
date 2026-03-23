@@ -1,0 +1,8 @@
+{
+    "name": "Stylometry + LogReg",
+    "Accuracy": 0.8105,
+    "Precision": 0.7948717948717948,
+    "Recall": 0.837,
+    "F1": 0.8153921091086215,
+    "AUC-ROC": 0.8966400000000001
+}
