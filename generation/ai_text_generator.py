@@ -4,7 +4,7 @@ import random
 import time
 import csv
 import os
-import re  # Добавлено для фильтрации иероглифов
+import re 
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
@@ -135,7 +135,6 @@ def main():
                     payload["top_p"] = current_top_p
                     print(f"T={current_temp} | P={current_top_p} |", end=" ", flush=True)
                 else:
-                    # Для "чувствительных" моделей убираем всё лишнее
                     print(f"T=AUTO | P=AUTO |", end=" ", flush=True)
                 
                 chat_completion = client.chat.completions.create(**payload)   
@@ -147,7 +146,6 @@ def main():
                 words = len(text.split())
                 chars = len(text)
 
-                # Проверка: длина + отсутствие иероглифов + наличие русских букв
                 if words >= 100 and is_mostly_russian(text):
                     current_id += 1 
                     error_streak = 0 
@@ -159,16 +157,15 @@ def main():
                     print(f"OK ({words} сл.)")
                 else:
                     reason = "Мало слов" if words < 100 else "Языковой брак"
-                    print(f"⚠️ ПЕРЕГЕНЕРАЦИЯ ({reason})")
+                    print(f"ПЕРЕГЕНЕРАЦИЯ ({reason})")
 
             except Exception as e:
                 error_str = str(e)
                 error_streak += 1
                 
-                # ВЫВОДИМ ПОЛНУЮ ОШИБКУ ТУТ:
                 print(f"\nОШИБКА API ({model_cfg['label']}):")
                 print("-" * 50)
-                print(error_str)  # Теперь выведет всё сообщение целиком
+                print(error_str) 
                 print("-" * 50)
                 
                 if "401" in error_str or "404" in error_str:
