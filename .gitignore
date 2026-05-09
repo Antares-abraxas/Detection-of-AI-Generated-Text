@@ -3,5 +3,15 @@ venv/
 .ipynb_checkpoints/
 backup/
 data/news.csv
-*.npy
-data/
+cache/features_cache_academic_500.npy
+cache/features_cache_academic_1000.npy
+cache/features_cache_academic_2000.npy
+cache/features_cache_academic.npy
+cache/labels_cache_academic_500.npy
+cache/labels_cache_academic_1000.npy
+cache/labels_cache_academic_2000.npy
+cache/labels_cache_academic.npy
+cache/syntactic_detector.pkl
+solution_3.ipynb
+src/__pycache__
+baselines/__pycache__
