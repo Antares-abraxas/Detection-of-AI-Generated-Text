@@ -1,0 +1,16 @@
+Сценарий,name,Accuracy,Precision,Recall,F1,AUC-ROC,AP
+In-domain (RU News),AICoreDetector (Syntactic),0.88944,0.92654,0.84585,0.88435,0.95705,0.96111
+In-domain (RU News),TF-IDF + Random Forest,0.95948,0.96552,0.95295,0.95919,0.99282,0.99319
+In-domain (RU News),TF-IDF + Logistic Regression,0.97699,0.98474,0.96897,0.97679,0.99787,0.99812
+In-domain (RU News),Stylometry + Random Forest,0.89795,0.9171,0.87487,0.89549,0.96447,0.96543
+In-domain (RU News),Stylometry + Logistic Regression,0.85343,0.8602,0.84384,0.85195,0.91895,0.92801
+Domain shift (RU Academic),AICoreDetector (Syntactic),0.987,0.97839,0.996,0.98712,0.99952,0.99952
+Domain shift (RU Academic),TF-IDF + Random Forest,0.64,0.60495,0.807,0.69152,0.71565,0.70672
+Domain shift (RU Academic),TF-IDF + Logistic Regression,0.6455,0.58877,0.965,0.73134,0.83712,0.83054
+Domain shift (RU Academic),Stylometry + Random Forest,0.5575,0.53368,0.911,0.67307,0.59884,0.56545
+Domain shift (RU Academic),Stylometry + Logistic Regression,0.5435,0.52365,0.963,0.67841,0.52456,0.47929
+Language shift (EN Wiki),AICoreDetector (Syntactic),0.76278,0.73117,0.83115,0.77796,0.85361,0.86388
+Language shift (EN Wiki),TF-IDF + Random Forest,0.5,0.5,1.0,0.66667,0.6345,0.58039
+Language shift (EN Wiki),TF-IDF + Logistic Regression,0.5,0.5,1.0,0.66667,0.65778,0.57532
+Language shift (EN Wiki),Stylometry + Random Forest,0.60048,0.55744,0.97503,0.70934,0.72015,0.69617
+Language shift (EN Wiki),Stylometry + Logistic Regression,0.60939,0.56745,0.92033,0.70204,0.6849,0.65041

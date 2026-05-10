@@ -21,7 +21,7 @@ Detection-of-AI-Generated-Text/
 │   ├── 03_stylo_rf.ipynb
 │   ├── 04_stylo_logreg.ipynb
 │   ├── 05_final_report.ipynb
-│   └── output/                ← CSV с результатами baseline экспериментов
+│   └── output/                ← результаты baseline экспериментов
 │
 ├── data/
 │   ├── ai_detection_ru_dataset_v4.csv   ← Основной датасет (10 000 записей, новости RU)
@@ -37,7 +37,7 @@ Detection-of-AI-Generated-Text/
 │   ├── feats_wiki_csai.npy
 │   └── labels_cache.npy
 │
-├── figures/                   ← Все графики экспериментов
+├── results/                   ← Все результаты (графики, таблицы) экспериментов
 │
 ├── generation/
 │   ├── ai_text_generator.py   ← Генерация AI-текстов 
@@ -45,6 +45,7 @@ Detection-of-AI-Generated-Text/
 │
 ├── solution.ipynb             ← Основной ноутбук: обучение и оценка модели
 ├── robustness_eval.ipynb      ← Эксперимент: робастность к domain/language shift
+├── ablation_study.ipynb       ← Ablation study: вклад признаков и групп
 ├── requirements.txt
 └── README.md
 ```
@@ -72,9 +73,17 @@ jupyter notebook solution.ipynb
 jupyter notebook robustness_eval.ipynb
 ```
 
+### 4. Тестирование значимости признаков (ablation study)
+
+```bash
+jupyter notebook ablation_study.ipynb
+```
 ---
 
 ## Датасеты
+Ввиду объема , папка `data/` исключена из репозитория. 
+Для запуска экспериментов скачайте датасеты по ссылкам ниже и распакуйте их в корень проекта:
+* **https://doi.org/10.5281/zenodo.20110122 / https://github.com/Antares-abraxas/Detection-of-AI-Generated-Text/releases/tag/data**
 
 ### Основной корпус (`ai_detection_ru_dataset_v4.csv`)
 Сбалансированный набор для обучения и оценки классификатора.
@@ -96,29 +105,14 @@ jupyter notebook robustness_eval.ipynb
 
 ---
 
-## Этапы `solution.ipynb`
+## Метрики модели (AICoreDetector, тестовая выборка)
 
-| Этап | Содержание | Выход |
-|------|-----------|-------|
-| **0** | Загрузка библиотек, чтение CSV | `df`, настройки |
-| **1** | Извлечение 15 признаков (spaCy) + кэш | `X`, `y`, `X_acad`, `y_acad` |
-| **2** | Mann–Whitney U-test + поправка Бонферрони | Таблица значимости, violin-plots |
-| **3** | Смешанный train (in-domain + academic), 5-fold CV, hold-out оценка | Accuracy, F1, AUC-ROC |
-| **4** | MDI Feature Importance + SHAP | Графики вклада признаков |
-| **5** | Интерпретируемое предсказание | Вердикт + причины по гипотезам |
-
-> **Кэш признаков:** при первом запуске spaCy-парсинг занимает несколько минут.
-> Результаты сохраняются в `cache/`. Повторные запуски мгновенны.
-
----
-
-## Этапы `robustness_eval.ipynb`
-
-| Сценарий | Датасет | Домен | Язык |
-|----------|---------|-------|------|
-| In-domain | `ai_detection_ru_dataset_v4.csv` (test 20%) | Новости | RU |
-| Domain shift | `RU_abstracts.csv` | Академический | RU |
-| Language shift | `wiki_csai.jsonl` | Энциклопедический | EN |
+| Метрика | In-domain | Domain shift | Language shift |
+|---|---|---|---|
+| Accuracy | 0,902 | 0,892 | 0,659 |
+| F1 | 0,901 | 0,898 | 0,741 |
+| AUC-ROC | 0,961 | 0,961 | 0,891 |
+| ΔF1 | — | −0,001 | −0,158 |
 
 ---
 
